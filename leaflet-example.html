@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>  map </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Load Leaflet code library - see updates at http://leafletjs.com/download.html -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- End link of library map leafet -->
+   
+
+
+
+
+
+</head>
+
+<body>
+
+ 
+
+
+    <div id="map" style=" width: -webkit-fill-available;height: 580px;"></div>
+
+
+
+
+
+
+ 
+
+
+
+
+</body>
+
+</html>
+
+
+
+<script>
+    // Creating map options
+    var mapOptions = {
+        center: [16.3808312, 34.9098177],
+        zoom: 7
+    }
+    var map = new L.map('map', mapOptions); // Creating a map object
+
+
+    /* Control panel to display map layers */
+    var controlLayers = L.control.layers(null, null, {
+        position: "topright",
+        collapsed: false
+    }).addTo(map);
+
+    // display Carto basemap tiles with light features and labels
+    var light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+    }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+    controlLayers.addBaseLayer(light, 'Carto Light basemap');
+
+    /* Stamen colored terrain basemap tiles with labels */
+    var terrain = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+    }); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+    controlLayers.addBaseLayer(terrain, 'Stamen Terrain basemap');
+
+    var theMarker = {};
+    var lat;
+    var lng;
+
+  
+</script>
